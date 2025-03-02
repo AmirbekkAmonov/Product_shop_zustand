@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import "@/styles/main.scss"
-import useBasket from '@/store/usebasket';
+import useBasket from '@/store/useBasket';
 import useFavorite from '@/store/useFavorite';
 
 function Header() {
