@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router'
-import Layout from '@/components/layout/layout'
+import Layout from '@/components/layout/Layout'
 import Home from '@/pages/Home'
 import NotFound from '@/pages/NotFound'
 import Add from '@/pages/NavPage/Add'
