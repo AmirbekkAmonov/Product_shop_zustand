@@ -1,0 +1,219 @@
+.add {
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--content-bg);
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .add__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .add__list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .open__btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: var(--button-bg);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--button-hover);
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .add__content {
+    width: 80%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out;
+    box-shadow: var(--box-shadow-modal);
+
+    form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      padding: 20px;
+      gap: 10px;
+
+      input {
+        width: 100%;
+        padding: 8px 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        border: 2px solid var(--border-bg);
+        background-color: var(--content-bg);
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: var(--light-bg);
+          box-shadow: 0 0 5px var(--light-bg);
+          background-color: var(--light-bg);
+        }
+      }
+
+      .border-error {
+        border-color: red !important;
+        box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+      }
+
+      .error-text {
+        color: red;
+        font-size: 14px;
+      }
+
+      .image-upload {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .upload-box {
+          width: 150px;
+          height: 150px;
+          border: 2px dashed var(--border-color);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          overflow: hidden;
+          transition: border-color 0.3s ease;
+
+          &:hover {
+            border-color: var(--button-bg);
+          }
+
+          span {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-color);
+          }
+
+          input {
+            display: none;
+          }
+
+          .preview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .add__btn {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        background-color: var(--button-bg);
+        color: #fff;
+        transition: all 0.5s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--button-hover);
+        }
+      }
+    }
+
+    .add__img-box {
+      position: relative;
+      width: 50%;
+      height: 400px;
+
+      .add__img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0 20px 20px 0;
+      }
+
+      .add__img-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: #fff;
+          background-color: red;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

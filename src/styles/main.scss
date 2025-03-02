@@ -1,0 +1,95 @@
+@use "./components/header";
+@use "./components/footer";
+@use "./components/productCard";
+@use "./pages/home";
+@use "./pages/notFound";
+@use "./pages/NavPage/add";
+@use "./pages/NavPage/favorite";
+@use "./pages/NavPage/basket";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --body-bg: #f4f7fd;
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --header-logo-color: #d2691e;
+    --box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    --box-shadow-modal: 2px 5px 25px rgba(0, 0, 0, 0.42);
+    --dropdawn-hover: #f0f0f0;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+    --light-bg: #2bd1ff;
+    --content-bg: #e0e2e7;
+    --footer-color: #333;
+    --border-color: #ddd;
+}
+
+.dark-mode {
+    --body-bg: #181818;
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --header-logo-color: #ffa500;
+    --box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+    --box-shadow-modal: 2px 5px 25px rgba(255, 255, 255, 0.388);
+    --dropdawn-hover: #333333;
+    --button-bg: #ff9800;
+    --button-hover: #f79e19;
+    --light-bg: #00d5ff;
+    --content-bg: #202020;
+    --footer-color: #ccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--body-bg) !important;
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888888d7;
+}
+
+::selection {
+    background-color: #007bff;
+    color: #fff;
+}
