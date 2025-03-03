@@ -3,16 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping, faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
-import useProduct from "@/store/useProduct";
-import useFavorite from "@/store/useFavorite";
-import useBasket from "@/store/useBasket";
+import useStore from "@/store/useStore";
 
 function ProductCard({ id, name, price, category, image, openEditModal, isAddPage }) {
-    const deleteProduct = useProduct((state) => state.deleteProduct);
-    const products = useProduct((state) => state.products);
-    const { favorites, toggleFavorite } = useFavorite();
-    const { addToBasket } = useBasket();
-
+    const { products, deleteProduct, favorites, toggleFavorite, addToBasket } = useStore();
+    
     const product = products.find((p) => p.id === id);
     const isFavorite = favorites.some((p) => p.id === id);
 

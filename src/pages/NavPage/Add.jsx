@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import CurrencyInput from "react-currency-input-field";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import useProduct from "@/store/useProduct";
+import useStore from "@/store/useStore";
 import ProductCard from "@/components/ProductCard/ProductCard";
 
 function Add() {
-  const addProduct = useProduct((state) => state.addProduct);
-  const editProduct = useProduct((state) => state.editProduct);
-  const products = useProduct((state) => state.products);
+  const { addProduct, editProduct, products } = useStore();
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -28,16 +26,19 @@ function Add() {
     reader.onload = () => callback(reader.result);
     reader.onerror = (error) => console.log("Error:", error);
   };
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       convertToBase64(file, (base64) => setImage(base64));
     }
   };
+
   const handlePriceChange = (value) => {
     setPrice(value);
     setIsValid(!value || parseFloat(value) >= 0);
   };
+
   const openEditModal = (product) => {
     setIsEdit(true);
     setEditId(product.id);
@@ -47,6 +48,7 @@ function Add() {
     setImage(product.image);
     setIsModalOpen(true);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !price || !category || !image) {
@@ -112,8 +114,8 @@ function Add() {
         )}
         <div className="add__list">
           {products.length > 0 ? (
-            products.map((product) => (
-              <ProductCard key={product.id} {...product} openEditModal={openEditModal} isAddPage={true} />
+            products.map((product, index) => (
+              <ProductCard key={index} {...product} openEditModal={openEditModal} isAddPage={true} />
             ))
           ) : (
             <p>Hali mahsulot qo'shilmagan</p>

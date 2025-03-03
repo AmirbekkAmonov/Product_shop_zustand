@@ -1,24 +1,26 @@
-import React from 'react'
-import ProductCard from '@/components/ProductCard/ProductCard'
-import useProduct from '@/store/useProduct';
+import React from "react";
+import ProductCard from "@/components/ProductCard/ProductCard";
+import useStore from "@/store/useStore";
 
 function Home() {
-  const products = useProduct((state) => state.products);
+  const products = useStore((state) => state.products);
 
   return (
-    <div className='home'>
-      <div className='container'>
+    <div className="home">
+      <div className="container">
         <h2>Home Page</h2>
-      <div className="home__list">
+        <div className="home__list">
           {products.length > 0 ? (
-            products.map((product) => <ProductCard key={product.id} {...product} />)
+            products.map((product, index) => (
+              <ProductCard key={index} {...product} isAddPage={false} />
+            ))
           ) : (
             <p>Hali mahsulot qo'shilmagan</p>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

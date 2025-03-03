@@ -1,14 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import useBasket from "@/store/useBasket";
-import useFavorite from "@/store/useFavorite";
+import { faHeart as faHeartSolid, faTrash } from "@fortawesome/free-solid-svg-icons";
+import useStore from "@/store/useStore";
 
 function Basket() {
-  const { basket, removeFromBasket, increaseQuantity, decreaseQuantity } = useBasket();
-  const { favorites, toggleFavorite } = useFavorite();
+  const { basket, removeFromBasket, increaseQuantity, decreaseQuantity, favorites, toggleFavorite } = useStore();
 
   return (
     <div className="basket">
@@ -19,10 +16,10 @@ function Basket() {
         ) : (
           <div className="basket__list">
             <ul>
-              {basket.map((item) => {
+              {basket.map((item, index) => {
                 const isFavorite = favorites.some((p) => p.id === item.id);
                 return (
-                  <li key={`${item.id}-${item.quantity}`}>
+                  <li key={index}>
                     <div className="cart-item">
                       <img src={item.image} alt={item.name} className="cart-item-image" />
                       <div className="cart-item-info">
@@ -46,7 +43,9 @@ function Basket() {
                           onClick={() => toggleFavorite(item)}
                           className={`basket-card__like ${isFavorite ? "liked" : ""}`}
                         />
-                        <button onClick={() => removeFromBasket(item.id)} className="delete-button"><FontAwesomeIcon icon={faTrash} /></button>
+                        <button onClick={() => removeFromBasket(item.id)} className="delete-button">
+                          <FontAwesomeIcon icon={faTrash} />
+                        </button>
                       </div>
                     </div>
                   </li>
