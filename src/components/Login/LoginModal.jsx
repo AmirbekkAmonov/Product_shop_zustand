@@ -20,9 +20,8 @@ const LoginModal = ({ isOpen, onClose }) => {
       setLoading(true);
       setError("");
 
-      try {
+    try {
         const res = await API.post("/login", { username, password });
-
         if (res.status === 200) {
             const data = res.data;
             login({
