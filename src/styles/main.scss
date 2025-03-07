@@ -1,6 +1,8 @@
 @use "./components/header";
 @use "./components/footer";
 @use "./components/productCard";
+@use "./components/sidebar";
+@use "./components/loginModal";
 @use "./pages/home";
 @use "./pages/notFound";
 @use "./pages/NavPage/add";
@@ -18,10 +20,12 @@
     --dropdawn-hover: #f0f0f0;
     --button-bg: #007bff;
     --button-hover: #0056b3;
+    --button-active: #0004ff;
     --light-bg: #2bd1ff;
     --content-bg: #e0e2e7;
     --footer-color: #333;
     --border-color: #ddd;
+
 }
 
 .dark-mode {
@@ -34,6 +38,7 @@
     --dropdawn-hover: #333333;
     --button-bg: #ff9800;
     --button-hover: #f79e19;
+    --button-active: #ff5900;
     --light-bg: #00d5ff;
     --content-bg: #202020;
     --footer-color: #ccc;
