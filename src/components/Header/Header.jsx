@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faCartShopping, faHeart, faSquarePlus, faStore } from "@fortawesome/free-solid-svg-icons";
 import '@/styles/main.scss';
 import useStore from '@/store/useStore';
 import LoginModal from "../Login/LoginModal";
@@ -32,14 +34,17 @@ function Header() {
                     <img className='logo' src="shop.png" alt="" /> Shop
                 </Link>
                 <div className='header__links'>
-                    <NavLink to={'/'}>Home</NavLink>
+                    <NavLink to={'/'}> <FontAwesomeIcon icon={faHouse} /> Home</NavLink>
+                    <NavLink to={'/product'}> <FontAwesomeIcon icon={faStore} /> Products</NavLink>
                     <NavLink to={'/favorite'}>
+                    <FontAwesomeIcon icon={faHeart} />
                         Favorites {favorites.length > 0 && <span>{favorites.length}</span>}
                     </NavLink>
                     <NavLink to={'/basket'}>
+                    <FontAwesomeIcon icon={faCartShopping} />
                         Cart {basket.length > 0 && <span>{basket.length}</span>}
                     </NavLink>
-                    {user && <NavLink to="/add">Add</NavLink>}
+                    {user && <NavLink to="/add"><FontAwesomeIcon icon={faSquarePlus} />Add</NavLink>}
                 </div>
                 <div className='header__lag-dark'>
                     <div className="dark" onClick={toggleDarkMode}>

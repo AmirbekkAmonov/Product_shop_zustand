@@ -39,6 +39,9 @@
         gap: 35px;
 
         a {
+            display: flex;
+            align-items: start;
+            gap: 5px;
             font-size: 16px;
             font-weight: 500;
             position: relative;

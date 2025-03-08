@@ -6,7 +6,10 @@
 
     .container {
         width: 100%;
-        padding: 0 20px;
+    }
+
+    .home__title {
+        margin-left: 20px;
     }
 
     .home__list {
@@ -16,6 +19,6 @@
         gap: 20px;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 20px 0;
+        padding: 20px ;
     }
 }

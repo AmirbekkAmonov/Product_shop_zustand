@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import useStore from '@/store/useStore';
 
 function Favorite() {
   const favorites = useStore((state) => state.favorites);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
   return (
     <div className='favorite'>
@@ -12,7 +16,12 @@ function Favorite() {
         <div className="favorites__list">
           {favorites.length > 0 ? (
             favorites.map((product, index) => (
-              <ProductCard key={index} {...product} isAddPage={false} />
+              <ProductCard
+                key={index}
+                {...product}
+                thumbnail={product.thumbnail || product.image || "product-default.png"} 
+                isAddPage={false}
+              />
             ))
           ) : (
             <p>Hali sevimli mahsulotlar yo'q!</p>

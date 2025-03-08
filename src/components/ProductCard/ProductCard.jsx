@@ -5,11 +5,11 @@ import { faCartShopping, faEdit, faTrash } from "@fortawesome/free-solid-svg-ico
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import useStore from "@/store/useStore";
 
-function ProductCard({ id, name, price, category, image, openEditModal, isAddPage }) {
-    const { products, deleteProduct, favorites, toggleFavorite, addToBasket } = useStore();
+function ProductCard({ id, name, price, category, image, thumbnail, openEditModal, isAddPage }) {
+    const { deleteProduct, favorites, toggleFavorite, addToBasket } = useStore();
     
-    const product = products.find((p) => p.id === id);
     const isFavorite = favorites.some((p) => p.id === id);
+    const productImage = image || thumbnail || "/default-image.jpg"; // Agar `image` bo‘lmasa, `thumbnail` ni ishlatamiz
 
     const handleDelete = () => {
         if (window.confirm("Haqiqatan ham ushbu mahsulotni o'chirmoqchimisiz?")) {
@@ -21,10 +21,10 @@ function ProductCard({ id, name, price, category, image, openEditModal, isAddPag
         <div className="product-card">
             <FontAwesomeIcon
                 icon={isFavorite ? faHeartSolid : faHeart}
-                onClick={() => toggleFavorite(product)}
-                className={`product-card__like ${product?.liked ? "liked" : ""}`}
+                onClick={() => toggleFavorite({ id, name, price, category, image: productImage })}
+                className={`product-card__like ${isFavorite ? "liked" : ""}`}
             />
-            <img src={image} alt={name} />
+            <img src={productImage} alt={name} onError={(e) => e.target.src = "product-default.png"} />
             <div className="product-card__content">
                 <h3>Name: <span>{name}</span></h3>
                 <p>Price: <span>{new Intl.NumberFormat("en-US", {
@@ -37,7 +37,7 @@ function ProductCard({ id, name, price, category, image, openEditModal, isAddPag
 
             {isAddPage ? (
                 <div className="product-card__buttons">
-                    <button className="edit-btn" onClick={() => openEditModal({ id, name, price, category, image })}>
+                    <button className="edit-btn" onClick={() => openEditModal({ id, name, price, category, image: productImage })}>
                         <FontAwesomeIcon icon={faEdit} /> Edit
                     </button>
                     <button className="delete-btn" onClick={handleDelete}>
@@ -45,7 +45,9 @@ function ProductCard({ id, name, price, category, image, openEditModal, isAddPag
                     </button>
                 </div>
             ) : (
-                <button className="product-card__btn" onClick={() => addToBasket(product)}><FontAwesomeIcon icon={faCartShopping} /> Buy</button>
+                <button className="product-card__btn" onClick={() => addToBasket({ id, name, price, category, image: productImage })}>
+                    <FontAwesomeIcon icon={faCartShopping} /> Buy
+                </button>
             )}
         </div>
     );

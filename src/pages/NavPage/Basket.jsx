@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as faHeartSolid, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,10 @@ import useStore from "@/store/useStore";
 
 function Basket() {
   const { basket, removeFromBasket, increaseQuantity, decreaseQuantity, favorites, toggleFavorite } = useStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
 
   return (
     <div className="basket">
@@ -18,10 +22,16 @@ function Basket() {
             <ul>
               {basket.map((item, index) => {
                 const isFavorite = favorites.some((p) => p.id === item.id);
+                const productImage = item.image || item.thumbnail || "product-default.png"; 
+
                 return (
                   <li key={index}>
                     <div className="cart-item">
-                      <img src={item.image} alt={item.name} className="cart-item-image" />
+                      <img 
+                        src={productImage} 
+                        alt={item.name} 
+                        className="cart-item-image" 
+                      />
                       <div className="cart-item-info">
                         <h3>Name: <span>{item.name}</span></h3>
                         <p>Price: <span>{new Intl.NumberFormat("en-US", {
