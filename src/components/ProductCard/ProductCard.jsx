@@ -9,7 +9,7 @@ function ProductCard({ id, name, price, category, image, thumbnail, openEditModa
     const { deleteProduct, favorites, toggleFavorite, addToBasket } = useStore();
     
     const isFavorite = favorites.some((p) => p.id === id);
-    const productImage = image || thumbnail || "/default-image.jpg"; // Agar `image` bo‘lmasa, `thumbnail` ni ishlatamiz
+    const productImage = image || thumbnail || "/default-image.jpg"; 
 
     const handleDelete = () => {
         if (window.confirm("Haqiqatan ham ushbu mahsulotni o'chirmoqchimisiz?")) {
