@@ -7,7 +7,8 @@ import Add from '@/pages/NavPage/Add'
 import Favorite from '@/pages/NavPage/Favorite'
 import Basket from '@/pages/NavPage/Basket'
 import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute'
-import ProductList from '../components/ProductList/ProductList'
+import ProductList from '@/components/ProductList/ProductList'
+import Profile from '@/pages/Profile'
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
         <Route path='/product' element={<ProductList />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/add" element={<Add />} />
+          <Route path='/profile' element={<Profile />} />
         </Route>
         <Route path='/favorite' element={<Favorite />} />
         <Route path='/basket' element={<Basket />} />
